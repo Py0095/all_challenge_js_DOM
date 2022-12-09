@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enonse13</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        button{
+            margin-top: 8px;
+            margin-left: 8px;
+            color: brown;
+            background-color: rgb(255, 238, 0);
+            border-radius: 13px;
+            font-size: 20px;
+        }
+        h3,h1{
+            font-size: 23px;
+            color: brown;
+        }
+        .data-wrapper{
+            margin-top:20px;
+            margin-left: 20px;
+            width: 50%;
+            margin-bottom:20px;  
+            padding-bottom: 100px;          
+        }
+        h1{
+            color: brown;
+            margin-left:250px ;
+            padding-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <main>
+        <button >Get data</button>
+        <div class="data-wrapper">
+          
+        </div>
+      <main>
+    <script>
+        const url = 'https://jsonplaceholder.typicode.com/todos';
+
+        const fetchData = async () => {
+            let api = await fetch(url)
+            let res = await api.json()
+            return res
+        }
+
+        // fetch(url).then((err, res) => {
+        //     if(!err)
+        //         return res.json()
+        // }).then((err, res) => {
+        //     console.log(res)
+        // })
+            const btn = document.getElementsByTagName('button')[0]
+            const div = document.getElementsByClassName('data-wrapper')[0]
+            console.log(div)
+            btn.onclick = async () => {
+                console.log('Clicked!!!')
+                const data = await fetchData()
+                div.innerHTML='<h1>Infos</h1>'
+                // console.log(data[0].completed)
+                data.forEach(el => {
+                    console.log(el)
+                    if(el.completed!== true){
+                        div.innerHTML +=`
+                    <h3>${el.title}</h3>
+                    <input type="checkbox" value="${el.completed}" checked>
+                    <label for="${el.id}">${el.id}</label>
+                    <hr><br><br>
+                    `
+                    }else{
+                        div.innerHTML +=`
+                    <h3>${el.title}</h3>
+                    <input type="checkbox" value="${el.completed}">
+                    <label for="${el.id}">${el.id}</label>
+                    <hr><br><br>
+                    `
+                    }
+                });
+            }
+        
+        
+    </script>
+</body>
+</html>
+
+<!-- <h3>${el.title}</h3>
+<input type="checkbox" value="${el.completed}" checked>
+<label for="${el.id}">${el.id}</label> -->
+<!-- <hr> -->
