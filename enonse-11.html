@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enonse11</title>
+</head>
+<body>
+
+
+  <script>
+        document.body.innerHTML=`<div id='jesus' style='height:300px; width:300px; background:#000;'></div>`
+        let div=document.getElementById('jesus')
+
+        div.onmousemove=e=>{
+            let x=logMovement(e), y=logMovementY(e)
+            let koule=`rgb(${x}, ${y}, ${parseInt((x+y)/2)}`
+            div.style['background']=koule    
+        }
+
+        function logMovement(event) {
+            let x=event.offsetX
+            return x
+          }
+        function logMovementY(event) {
+            let y=event.offsetY
+            return y
+        }
+  </script>
+</body>
+</html>
