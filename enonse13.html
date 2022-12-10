@@ -68,7 +68,7 @@
                 // console.log(data[0].completed)
                 data.forEach(el => {
                     console.log(el)
-                    if(el.completed!== true){
+                    if(el.completed == true){
                         div.innerHTML +=`
                     <h3>${el.title}</h3>
                     <input type="checkbox" value="${el.completed}" checked>
